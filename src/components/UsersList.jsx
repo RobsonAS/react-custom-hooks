@@ -1,12 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
+import useUsers from "../hooks/useUsers";
 
 const UsersList = () => {
+  const [users, addUser] = useUsers();
   return (
-    <ul>
-      <li>Robson</li>
-      <li>Mayline</li>
-      <li>Gleyson</li>
-    </ul>
+    <>
+      <ul>
+        {users.map((user, key) => (
+          <li key={key}>{user.name}</li>
+        ))}
+      </ul>
+
+      <button onClick={() => addUser({ name: "Robson" })}>
+        Adicionar usuário
+      </button>
+    </>
   );
 };
 
